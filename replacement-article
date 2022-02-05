@@ -1,0 +1,6 @@
+Simulation:
+
+- Given a dataset X without zeros and a multivariate distribution f(theta) defined on R^d.
+- Estimate theta from H = ilr(X).
+- Generate samples with zeros from Mult(coda(h)) with h ~ f(theta).
+- Replace zeros using different zero replacement approaches.
