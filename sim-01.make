@@ -1,4 +1,4 @@
-L_data = mvtnorm
+L_data = mvtnorm iris mixture
 L_seed = $(shell seq 1 5)
 L_count =  uniform
 L_size = $(shell seq 10 10 50)
@@ -20,6 +20,12 @@ EVALUATE = $(foreach evaluate,$(L_EVALUATE),$(shell printf 'sim-01/%s.RData' $(e
 all : $(CODA) $(CODA_COUNT) $(REPLACEMENT) $(EVALUATE)
 
 sim-01/data_mvtnorm-%.RData : sim-01/data_mvtnorm.R 
+	Rscript -e 'GEN = "$*"; source("$<")'
+
+sim-01/data_iris-%.RData : sim-01/data_iris.R 
+	Rscript -e 'GEN = "$*"; source("$<")'
+
+sim-01/data_mixture-%.RData : sim-01/data_mixture.R 
 	Rscript -e 'GEN = "$*"; source("$<")'
 
 sim-01/count_uniform-%.RData : sim-01/count_uniform.R $(CODA)
