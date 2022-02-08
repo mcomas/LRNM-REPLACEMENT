@@ -14,8 +14,8 @@ rotation = random_rotation_matrix_incl_flip <- function(n){
   return(M)
 }
 
-H.iris = coordinates(iris[,1:4])
-M = rotation(3)
-P = composition(as.matrix(H.iris) %*% M)
+H.parliamanent = coordinates(as.matrix(coda.base::parliament2017[,-1]))
+M = rotation(ncol(H.parliamanent))
+P = composition(H.parliamanent %*% M)
 
-save(P, M, file = sprintf("sim-01/data/data_iris-%s.RData", GEN))
+save(P, M, file = sprintf("sim-01/data/data_parliament-%s.RData", GEN))

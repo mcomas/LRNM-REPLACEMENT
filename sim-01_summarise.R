@@ -14,7 +14,7 @@ dresults = do.call(rbind, l_results) |>
 library(ggplot2)
 ggplot(data=dresults) +
   geom_smooth(aes(x = size, y = value, col = Replacement)) +
-  facet_wrap(dataset~metric, scales = 'free_y') +
+  facet_grid(metric~dataset, scales = 'free_y') +
   scale_x_continuous(trans = "reverse") +
   theme(legend.position = 'top')
 

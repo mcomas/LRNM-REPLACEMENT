@@ -9,7 +9,7 @@ FDATA = sub("size_([0-9]+)-(.+)", "\\2", GEN)
 
 ############
 
-load(sprintf('sim-01/%s.RData', FDATA))
+load(sprintf('sim-01/data/%s.RData', FDATA))
 
 set.seed(SEED)
 NO_ZEROS = TRUE
@@ -18,4 +18,4 @@ while(NO_ZEROS){
   NO_ZEROS = max(X == 0) == 0
 }
 
-save(X, file = sprintf("sim-01/count_uniform-%s.RData", GEN))
+save(X, file = sprintf("sim-01/data/count_uniform-%s.RData", GEN))

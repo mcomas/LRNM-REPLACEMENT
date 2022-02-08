@@ -6,8 +6,8 @@ FDATA = sub("replacement_(.+)-count_(.+)-size_([0-9]+)-(.+)", "\\4", GEN)
 
 
 ###############
-load(sprintf('sim-01/%s.RData', FDATA))
-load(sprintf("sim-01/%s.RData", GEN))
+load(sprintf('sim-01/data/%s.RData', FDATA))
+load(sprintf("sim-01/data/%s.RData", GEN))
 
 paired.distance = function(H_orig, H_p){
   mean(apply(H_orig-H_p, 1, function(x) sqrt(sum(x^2))))
@@ -18,7 +18,7 @@ results = data.frame(
   metric = 'Distance',
   value = paired.distance(coordinates(P), coordinates(P.rpl)))
 
-saveRDS(results, file = sprintf("sim-01/evaluate_paired.distance-%s.RData", GEN))
+saveRDS(results, file = sprintf("sim-01/data/evaluate_paired.distance-%s.RData", GEN))
 
 # evaluate = function(H_gs, H_p){
 #   c('paired.dist' = mean(apply(H_gs-H_p, 1, function(x) sqrt(sum(x^2)))),
