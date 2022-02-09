@@ -1,9 +1,9 @@
-L_data = mvtnorm iris mixture parliament
-L_seed = $(shell seq 1 2)
+L_data = iris mixture parliament # mvtnorm 
+L_seed = $(shell seq 1 4)
 L_count =  uniform
-L_size = $(shell seq 10 10 50)
-L_replacement = gbm czm
-L_evaluate = stress frobenius paired.distance
+L_size = $(shell seq 10 20 90)
+L_replacement = czm mixture-lrn-laplace #  lrnm-laplace gbm 
+L_evaluate = stress paired.distance # frobenius
 
 L_CODA = $(foreach data,$(L_data),$(foreach seed,$(L_seed),$(shell printf 'data_%s-seed_%05d' $(data) $(seed))))
 CODA = $(foreach coda,$(L_CODA),$(shell printf 'sim-01/data/%s.RData' $(coda)))
@@ -38,6 +38,12 @@ sim-01/data/replacement_gbm-%.RData : sim-01/replacement_gbm.R $(CODA_COUNT)
 	Rscript -e 'GEN = "$*"; source("$<")'
 
 sim-01/data/replacement_czm-%.RData : sim-01/replacement_czm.R $(CODA_COUNT)
+	Rscript -e 'GEN = "$*"; source("$<")'
+
+sim-01/data/replacement_lrnm-laplace-%.RData : sim-01/replacement_lrnm-laplace.R $(CODA_COUNT)
+	Rscript -e 'GEN = "$*"; source("$<")'
+
+sim-01/data/replacement_mixture-lrn-laplace-%.RData : sim-01/replacement_mixture-lrn-laplace.R $(CODA_COUNT)
 	Rscript -e 'GEN = "$*"; source("$<")'
 
 sim-01/data/evaluate_stress-%.RData : sim-01/evaluate_stress.R $(REPLACEMENT)

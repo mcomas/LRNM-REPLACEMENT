@@ -1,4 +1,4 @@
-l_results = list.files("sim-01/", pattern = "evaluate.*RData", full.names = TRUE) |>
+l_results = list.files("sim-01/data/", pattern = "evaluate.*RData", full.names = TRUE) |>
   lapply(readRDS)
 
 replacement = function(GEN) sub("replacement_(.+)-count_(.+)-size_([0-9]+)-(.+)", "\\1", GEN)
