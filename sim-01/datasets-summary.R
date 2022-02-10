@@ -23,4 +23,4 @@ dsummary = lapply(datasets$fname, function(fname_){
 
 datasets_summary = cbind(datasets, dsummary)
 
-save(datasets_summary, file = 'sim-01/datasets_summary.RData')
+save(datasets_summary, file = 'sim-01/datasets-summary.RData')
