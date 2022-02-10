@@ -1,22 +1,25 @@
 library(coda.base)
 library(zCompositions)
 
-if(!exists("GEN")) GEN = "replacement_gbm-count_uniform-size_00100-data_mvtnorm-seed_00001"
-FDATA = sub("replacement_(.+)-count_(.+)-size_([0-9]+)-(.+)", "\\4", GEN)
-
+if(!exists("GEN")) GEN = "replacement_czm-count_uniform-size_00100-data_mixture-seed_00001"
+FDATA = sub("replacement_.+-data_(.+)", "\\1", GEN)
+FCOUNT = sub("replacement_.+-count_(.+)", "\\1", GEN)
 
 ###############
-load(sprintf('sim-01/data/%s.RData', FDATA))
+load(sprintf('sim-01/data/count_%s.RData', FCOUNT))
+load(sprintf('sim-01/data/data_%s.RData', FDATA))
 load(sprintf("sim-01/data/%s.RData", GEN))
 
 stress = function(H_orig, H_p){
   sqrt(sum((as.matrix(dist(H_p)) -  as.matrix(dist(H_orig)))^2) / sum(as.matrix(dist(H_orig))^2))
 }
 
+iNZ = rowSums(X == 0) != 0
+
 results = data.frame(
   gen = GEN,
   metric = 'STRESS',
-  value = stress(coordinates(P), coordinates(P.rpl)))
+  value = stress(coordinates(P[iNZ,]), coordinates(P.rpl[iNZ,])))
 
 saveRDS(results, file = sprintf("sim-01/data/evaluate_stress-%s.RData", GEN))
 

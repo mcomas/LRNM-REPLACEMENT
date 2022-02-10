@@ -81,7 +81,7 @@ for(i in 1:nrow(X)){
       
       x_r = composition(c(h1,h2), B)
     }else{
-      print(i)
+      warning("Posterior calculation needs to be modified.")
       post = prop.table(round(mixt$z[i,], 4))
       ipost = post > 0
       l_h1 = lapply((1:mixt$G)[ipost], function(g){

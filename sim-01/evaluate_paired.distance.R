@@ -2,21 +2,24 @@ library(coda.base)
 library(zCompositions)
 
 if(!exists("GEN")) GEN = "replacement_mixture-lrn-laplace-count_uniform-size_00010-data_parliament-seed_00001"
-FDATA = sub("replacement_(.+)-count_(.+)-size_([0-9]+)-(.+)", "\\4", GEN)
-
+FDATA = sub("replacement_.+-data_(.+)", "\\1", GEN)
+FCOUNT = sub("replacement_.+-count_(.+)", "\\1", GEN)
 
 ###############
-load(sprintf('sim-01/data/%s.RData', FDATA))
+load(sprintf('sim-01/data/count_%s.RData', FCOUNT))
+load(sprintf('sim-01/data/data_%s.RData', FDATA))
 load(sprintf("sim-01/data/%s.RData", GEN))
 
 paired.distance = function(H_orig, H_p){
   mean(apply(H_orig-H_p, 1, function(x) sqrt(sum(x^2))))
 }
 
+iNZ = rowSums(X == 0) != 0
+
 results = data.frame(
   gen = GEN,
   metric = 'Distance',
-  value = paired.distance(coordinates(P), coordinates(P.rpl)))
+  value = paired.distance(coordinates(P[iNZ,]), coordinates(P.rpl[iNZ,])))
 
 saveRDS(results, file = sprintf("sim-01/data/evaluate_paired.distance-%s.RData", GEN))
 

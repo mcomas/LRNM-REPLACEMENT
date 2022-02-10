@@ -1,9 +1,12 @@
-L_data = iris mixture parliament # mvtnorm 
-L_seed = $(shell seq 1 1)
+L_data = iris mixture parliament 
+# mvtnorm 
+L_seed = $(shell seq 1 5)
 L_count =  uniform
-L_size = $(shell seq 10 20 30)
-L_replacement = czm mixture-lrn-laplace #  lrnm-laplace gbm 
-L_evaluate = stress paired.distance # frobenius
+L_size = $(shell seq 20 20 100)
+L_replacement = czm mixture-lrn-laplace 
+# lrnm-laplace gbm 
+L_evaluate = stress paired.distance 
+# frobenius
 
 
 ####
@@ -23,7 +26,10 @@ REPLACEMENT = $(foreach replacement,$(L_REPLACEMENT),$(shell printf 'sim-01/data
 L_EVALUATE = $(foreach evaluate,$(L_evaluate),$(foreach replacement,$(L_REPLACEMENT),$(shell printf 'evaluate_%s-%s' $(evaluate) $(replacement))))
 EVALUATE = $(foreach evaluate,$(L_EVALUATE),$(shell printf 'sim-01/data/%s.RData' $(evaluate)))
 
-all : $(CODA) $(CODA_COUNT) $(REPLACEMENT) $(EVALUATE)
+all : $(CODA) $(CODA_COUNT) $(REPLACEMENT) $(EVALUATE) sim-01/datasets-summary.RData
+
+sim-01/datasets-summary.RData : sim-01/datasets-summary.R $(CODA_COUNT)
+	Rscript $<
 
 define DATA_RULE
 sim-01/data/data_$(data)-seed_$(seed).RData : sim-01/data_$(data).R
@@ -50,4 +56,5 @@ endef
 $(foreach evaluate,$(L_evaluate),$(foreach replacement,$(L_REPLACEMENT),$(eval $(EVALUATE_RULE))))
 
 clean :
-	rm sim-01/data/*.RData
+	rm -f sim-01/data/*.RData
+	rm -f sim-01/datasets-summary.RData
