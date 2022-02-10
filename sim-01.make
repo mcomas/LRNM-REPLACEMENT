@@ -2,7 +2,7 @@ L_data = iris mixture parliament
 # mvtnorm 
 L_seed = $(shell seq 1 5)
 L_count =  uniform
-L_size = $(shell seq 20 20 100)
+L_size = $(shell seq 10 20 150)
 L_replacement = czm mixture-lrn-laplace 
 # lrnm-laplace gbm 
 L_evaluate = stress paired.distance 

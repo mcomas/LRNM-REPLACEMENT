@@ -15,8 +15,8 @@ rotation = random_rotation_matrix_incl_flip <- function(n){
   return(M)
 }
 
-pars = MixSim(MaxOmega = 0.05, K = 4, p = 10)
-H = do.call(simdataset, c(list(n = 50), pars[c('Pi', 'Mu', 'S')]))$X
+pars = MixSim(MaxOmega = 0.01, K = 4, p = 10)
+H = do.call(simdataset, c(list(n = 100), pars[c('Pi', 'Mu', 'S')]))$X
 P = composition(H)
 
 save(P, pars, file = sprintf("sim-01/data/data_mixture-%s.RData", GEN))

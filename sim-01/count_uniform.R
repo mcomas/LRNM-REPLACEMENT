@@ -15,7 +15,7 @@ set.seed(SEED)
 NO_ZEROS = TRUE
 while(NO_ZEROS){
   X = rmultinomial(size = SIZE, p = P)
-  NO_ZEROS = max(X == 0) == 0
+  NO_ZEROS = sum(X == 0) < 5
 }
 
 save(X, file = sprintf("sim-01/data/count_uniform-%s.RData", GEN))

@@ -13,7 +13,7 @@ B0 = pc_basis(X0)
 H0 = coordinates(X0, B0)
 
 d = ncol(H0)
-mixt = Mclust(H0, modelNames = "EII")
+mixt = Mclust(H0, G=1:20, modelNames = "VII")
 
 B0 = matrix(0, nrow = 1+ncol(H0), ncol = ncol(H0))
 Bd = lapply(1:ncol(X0), ilr_basis)
