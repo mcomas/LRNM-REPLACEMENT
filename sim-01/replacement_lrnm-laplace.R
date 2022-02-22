@@ -38,7 +38,7 @@ for(i in 1:nrow(X)){
     if(sNZ > 1){
       Bt = t(B) %*% Bd[[1+d]]
       Mt = Bt %*% M
-      St = t(Bt) %*% S %*% Bt
+      St = Bt %*% S %*% t(Bt)
       
       I1 = 1:sZ
       I2 = -I1

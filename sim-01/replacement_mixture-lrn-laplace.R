@@ -81,13 +81,22 @@ for(i in 1:nrow(X)){
       
       x_r = composition(c(h1,h2), B)
     }else{
-      warning("Posterior calculation needs to be modified.")
-      post = prop.table(round(mixt$z[i,], 4))
-      ipost = post > 0
-      l_h1 = lapply((1:mixt$G)[ipost], function(g){
-        c_posterior_approximation_vec(x, mixt$parameters$mean[,g], mixt$parameters$variance$sigma[,,g], B0)[,d+1]
+      l_post = lapply(1:mixt$G, function(g){
+        
+        N_pars = c_posterior_approximation_vec(x, mixt$parameters$mean[,g], mixt$parameters$variance$sigma[,,g], B0)
+        
+        h = N_pars[,d+1]
+        log_p_h = dmvnorm(rbind(h), mixt$parameters$mean[,g], mixt$parameters$variance$sigma[,,g], log = TRUE)
+        log_px_h = dmultinom(x, prob = composition(h, B), log = TRUE)
+        log_ph_x = 0.5 * log(1/det(N_pars[,1:d,drop=FALSE]))
+        list(p = mixt$parameters$pro[g] * exp(log_px_h + log_p_h  - log_ph_x),
+             m = h)
       })
-      h1 = rowSums(mapply(`*`, post[ipost], l_h1))
+      h1 = mapply(`*`, 
+                  prop.table(sapply(l_post, `[[`, 1)),
+                  lapply(l_post, `[[`, 2)) |>
+        matrix(nrow = sZ) |>
+        rowSums()
       x_r = composition(h1)
     }
   }else{

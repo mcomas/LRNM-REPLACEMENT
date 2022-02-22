@@ -14,7 +14,7 @@ rotation = random_rotation_matrix_incl_flip <- function(n){
   return(M)
 }
 
-H.iris = coordinates(iris[,1:4])
+H.iris = scale(coordinates(iris[,1:4]), scale = FALSE) * 2
 M = rotation(3)
 P = composition(as.matrix(H.iris) %*% M)
 

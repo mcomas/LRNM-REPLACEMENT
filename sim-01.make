@@ -2,10 +2,11 @@ L_data = iris mixture parliament
 # mvtnorm 
 L_seed = $(shell seq 1 5)
 L_count =  uniform
-L_size = $(shell seq 10 20 150)
-L_replacement = czm mixture-lrn-laplace 
-# lrnm-laplace gbm 
-L_evaluate = stress paired.distance 
+L_size = $(shell seq 10 20 210)
+L_replacement = czm lrnm-em-hermite
+#mixture-lrn-laplace one-mixture-lrn-laplace em-lrn-laplace
+# lrnm-laplace gbm dir-mixture-lrn-laplace
+L_evaluate = stress paired.distance stress1
 # frobenius
 
 
@@ -26,7 +27,9 @@ REPLACEMENT = $(foreach replacement,$(L_REPLACEMENT),$(shell printf 'sim-01/data
 L_EVALUATE = $(foreach evaluate,$(L_evaluate),$(foreach replacement,$(L_REPLACEMENT),$(shell printf 'evaluate_%s-%s' $(evaluate) $(replacement))))
 EVALUATE = $(foreach evaluate,$(L_EVALUATE),$(shell printf 'sim-01/data/%s.RData' $(evaluate)))
 
+
 all : $(CODA) $(CODA_COUNT) $(REPLACEMENT) $(EVALUATE) sim-01/datasets-summary.RData
+data : $(CODA) $(CODA_COUNT)
 
 sim-01/datasets-summary.RData : sim-01/datasets-summary.R $(CODA_COUNT)
 	Rscript $<
