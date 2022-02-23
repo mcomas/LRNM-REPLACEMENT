@@ -2,7 +2,7 @@ L_data = iris mixture parliament
 # mvtnorm 
 L_seed = $(shell seq 1 5)
 L_count =  uniform
-L_size = $(shell seq 10 20 210)
+L_size = $(shell seq 30 20 150)
 L_replacement = czm lrnm-em-hermite
 #mixture-lrn-laplace one-mixture-lrn-laplace em-lrn-laplace
 # lrnm-laplace gbm dir-mixture-lrn-laplace

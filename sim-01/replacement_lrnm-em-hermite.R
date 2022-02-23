@@ -2,7 +2,7 @@ library(coda.base)
 library(coda.count)
 library(zCompositions)
 
-if(!exists("GEN")) GEN = "count_uniform-size_00010-data_iris-seed_00002"
+if(!exists("GEN")) GEN = "count_uniform-size_00030-data_iris-seed_00002"
 
 ###############
 load(sprintf("sim-01/data/%s.RData", GEN))
@@ -60,11 +60,11 @@ while(CONT){
   
   lNapprox.wZ = mapply(function(i, mc, sc, h2, B){
     c_lrnm_cond_posterior_approximation_vec(X[i,], mc, MASS::ginv(sc), h2, B)
-  }, wZ, lMc, lSc, lh2, lB)
+  }, wZ, lMc, lSc, lh2, lB, SIMPLIFY = FALSE)
   
   lMoments.wZ = mapply(function(i, napprox, mt, st, h2, B){
     c_moments_lrnm_cond_hermite(X[i,], napprox[,sZ[i]+1], napprox[1:sZ[i],1:sZ[i],drop=FALSE], mt, st, h2, B, mu_centering = rep(0,sZ[i]), order = 10)
-  }, wZ, lNapprox.wZ, lMt, lSt, lh2, lB)
+  }, wZ, lNapprox.wZ, lMt, lSt, lh2, lB, SIMPLIFY = FALSE)
   
   M1.wZ = mapply(function(moments, h2, Bt){
     t(Bt) %*% c(moments[,1+d-length(h2)], h2)
