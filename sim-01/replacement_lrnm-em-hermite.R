@@ -1,7 +1,7 @@
 library(coda.base)
 library(coda.count)
 library(zCompositions)
-
+library(mvtnorm)
 if(!exists("GEN")) GEN = "count_uniform-size_00030-data_iris-seed_00002"
 
 ###############
@@ -37,6 +37,7 @@ lBt = lapply(lB, function(B) t(B) %*% Bd[[1+d]])
 ########## Start iteration here
 IT = 0
 CONT = TRUE
+loglikN_prev = NA
 while(CONT){
   IT = IT + 1
   
@@ -115,6 +116,9 @@ while(CONT){
   M = M_new
   S = S_new
   
+  loglikN_new = sum(dmvnorm(M1, M, S, log=TRUE))
+  print(sprintf("%0.3f. Increment: %0.3f", loglikN_new,  loglikN_new-loglikN_prev))
+  loglikN_prev = loglikN_new
 }
 
 P.rpl = composition(M1)

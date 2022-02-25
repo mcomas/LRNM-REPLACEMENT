@@ -23,4 +23,4 @@ set.seed(SEED)
 H = mvtnorm::rmvnorm(100, mean = MU, sigma = SIGMA)
 P = as.matrix(composition(H))
 
-save(P, MU, SIGMA, file = sprintf("sim-01/data/data_mvtnorm-%s.RData", GEN))
+save(P, MU, SIGMA, file = sprintf("sim-01/data/data_lrnormal-%s.RData", GEN))

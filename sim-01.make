@@ -3,7 +3,7 @@ L_data = iris mixture parliament
 L_seed = $(shell seq 1 5)
 L_count =  uniform
 L_size = $(shell seq 30 20 150)
-L_replacement = czm lrnm-em-hermite
+L_replacement = czm lrnm-em-hermite em-robust em-normal
 #mixture-lrn-laplace one-mixture-lrn-laplace em-lrn-laplace
 # lrnm-laplace gbm dir-mixture-lrn-laplace
 L_evaluate = stress paired.distance stress1
@@ -48,7 +48,7 @@ $(foreach count,$(L_count),$(foreach size,$(L_size_s),$(foreach coda,$(L_CODA),$
 
 define REPLACEMENT_RULE
 sim-01/data/replacement_$(replacement)-$(coda_count).RData : sim-01/replacement_$(replacement).R sim-01/data/$(coda_count).RData
-	Rscript -e 'GEN = "$(coda_count)"; source("$$<")'
+	Rscript -e 'GEN = "$(coda_count)"; source("$$<")' > sim-01/data/replacement_$(replacement)-$(coda_count).log
 endef
 $(foreach replacement,$(L_replacement),$(foreach coda_count,$(L_CODA_COUNT),$(eval $(REPLACEMENT_RULE))))
 
