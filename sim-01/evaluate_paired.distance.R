@@ -1,7 +1,7 @@
 library(coda.base)
 library(zCompositions)
 
-if(!exists("GEN")) GEN = "replacement_mixture-lrn-laplace-count_uniform-size_00010-data_parliament-seed_00001"
+if(!exists("GEN")) GEN = "replacement_zinflrnm-count_uniform-size_00050-data_parliament-seed_00001"
 FDATA = sub("replacement_.+-data_(.+)", "\\1", GEN)
 FCOUNT = sub("replacement_.+-count_(.+)", "\\1", GEN)
 

@@ -1,13 +1,13 @@
-L_data = iris mixture parliament 
-# mvtnorm 
+L_data = mixture parliament 
+# mvtnorm iris
 L_seed = $(shell seq 1 5)
 L_count =  uniform
-L_size = $(shell seq 30 20 150)
-L_replacement = czm lrnm-em-hermite em-robust em-normal
-#mixture-lrn-laplace one-mixture-lrn-laplace em-lrn-laplace
+L_size = $(shell seq 30 20 110)
+L_replacement = czm em-normal lrnm-cond-hermite lrnm zinflrnm
+# mixture-lrn-laplace one-mixture-lrn-laplace em-lrn-laplace
 # lrnm-laplace gbm dir-mixture-lrn-laplace
-L_evaluate = stress paired.distance stress1
-# frobenius
+L_evaluate = paired.distance
+# frobenius stress1
 
 
 ####

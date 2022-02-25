@@ -123,4 +123,4 @@ while(CONT){
 
 P.rpl = composition(M1)
 
-save(P.rpl, file = sprintf("sim-01/data/replacement_lrnm-em-hermite-%s.RData", GEN))
+save(P.rpl, file = sprintf("sim-01/data/replacement_lrnm-cond-hermite-%s.RData", GEN))
