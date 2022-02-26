@@ -21,9 +21,10 @@ dresults = do.call(rbind, l_results) |>
   subset(Replacement %in% REPLACEMENT)
 
 library(ggplot2)
+set.seed(1)
 ggplot(data=dresults) +
   geom_smooth(aes(x = size, y = value, col = Replacement)) +
-  # geom_boxplot(aes(x = size, y = value, fill = Replacement, group = paste(size,Replacement))) +
+  geom_jitter(aes(x = size, y = value, col = Replacement, group = paste(size,Replacement))) +
   facet_grid(metric~dataset, scales = 'free_y') +
   scale_x_continuous(trans = "reverse") +
   theme(legend.position = 'top')

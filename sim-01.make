@@ -2,7 +2,7 @@ L_data = mixture parliament
 # mvtnorm iris
 L_seed = $(shell seq 1 5)
 L_count =  uniform
-L_size = $(shell seq 30 20 110)
+L_size = $(shell seq 10 20 110)
 L_replacement = czm em-normal lrnm-cond-hermite lrnm zinflrnm
 # mixture-lrn-laplace one-mixture-lrn-laplace em-lrn-laplace
 # lrnm-laplace gbm dir-mixture-lrn-laplace
@@ -61,3 +61,4 @@ $(foreach evaluate,$(L_evaluate),$(foreach replacement,$(L_REPLACEMENT),$(eval $
 clean :
 	rm -f sim-01/data/*.RData
 	rm -f sim-01/datasets-summary.RData
+
