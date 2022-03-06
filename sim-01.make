@@ -3,10 +3,10 @@ L_data = mixture parliament
 L_seed = $(shell seq 1 5)
 L_count =  uniform
 L_size = $(shell seq 10 20 110)
-L_replacement = czm em-normal lrnm-cond-hermite lrnm zinflrnm
+L_replacement = czm em-normal lrnm-cond-hermite lrnb-cond-equal-hermite lrnm zinflrnm dm
 # mixture-lrn-laplace one-mixture-lrn-laplace em-lrn-laplace
 # lrnm-laplace gbm dir-mixture-lrn-laplace
-L_evaluate = paired.distance
+L_evaluate = paired.distance paired.distance.in0
 # frobenius stress1
 
 

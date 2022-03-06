@@ -1,5 +1,7 @@
 l_results = list.files("sim-01/data/", pattern = "evaluate.*RData", full.names = TRUE) |>
-  lapply(readRDS)
+  lapply(function(x) try(readRDS(x)))
+l_results = l_results[sapply(l_results, is.data.frame)]
+
 lns = readLines("sim-01.make")
 DATA = scan(text = sub("^L_data = (.+)", "\\1", lns[grepl("^L_data = ", lns)]), what = 'character', quiet = TRUE)
 SEED = as.integer(system(sub("^L_seed = \\$\\(shell (.+)\\)", "\\1", lns[grepl("^L_seed = ", lns)]), intern = TRUE))
@@ -23,9 +25,15 @@ dresults = do.call(rbind, l_results) |>
 library(ggplot2)
 set.seed(1)
 ggplot(data=dresults) +
-  geom_smooth(aes(x = size, y = value, col = Replacement)) +
-  geom_jitter(aes(x = size, y = value, col = Replacement, group = paste(size,Replacement))) +
+  geom_smooth(aes(x = size, y = value, col = Replacement), se = TRUE) +
+  geom_jitter(aes(x = size, y = value, col = Replacement, group = paste(size,Replacement)), alpha = 0.6, size = 0.5) +
   facet_grid(metric~dataset, scales = 'free_y') +
   scale_x_continuous(trans = "reverse") +
   theme(legend.position = 'top')
 
+ggplot(data=subset(dresults, grepl("^lrn", Replacement))) +
+  geom_smooth(aes(x = size, y = value, col = Replacement), se = TRUE) +
+  geom_jitter(aes(x = size, y = value, col = Replacement, group = paste(size,Replacement)), alpha = 0.6, size = 0.5) +
+  facet_grid(metric~dataset, scales = 'free_y') +
+  scale_x_continuous(trans = "reverse") +
+  theme(legend.position = 'top')
