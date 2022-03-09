@@ -110,7 +110,7 @@ while(CONT){
   
   M_new = colMeans(M1)
   S_new = apply(M2, 1:2, mean) - M_new %*% t(M_new)
-  tol = max((S - S_new)^2)
+  tol = max(abs(S - S_new))
   CONT = tol > 1e-04
   
   M = M_new
