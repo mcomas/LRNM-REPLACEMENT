@@ -7,7 +7,12 @@ l_results = l_results[sapply(l_results, is.data.frame)]
 ddata = list.files("sim-01/data/", pattern = "^data.*RData", full.names = TRUE) |>
   lapply(function(x){
     load(x)
+    cr = cov2cor(SIGMA)
+    diag(cr) = NA
+    r2 = mean(abs(cr), na.rm=TRUE)
     tibble(
+      r2 = r2,
+      d = length(MU),
       seed = sub("(.*)data_(.*)-seed_(.*).RData", "\\3", x)
     )
   }) |> bind_rows()
@@ -37,6 +42,8 @@ dresults = do.call(rbind, l_results) |>
   as_tibble() |>
   left_join(ddata, by = 'seed')
 
+summary(glm(value~size+d+replacement, data = subset(dresults , metric == 'Distance')))
+
 library(ggplot2)
 set.seed(1)
 p = ggplot(data=dresults) +
@@ -56,11 +63,40 @@ dplot2 = dresults |>
   group_by(replacement, metric, size) |>
   summarise(m = mean(value), lo = m - 1.96*sd(value)/sqrt(n()), hi = m + 1.96*sd(value)/sqrt(n()))
 
+p = ggplot(data=dplot2) +
+  geom_errorbar(aes(x=size, y = m, ymin = lo, ymax=hi, col = replacement), 
+                size = 1, width = 5, position = position_dodge()) +
+  facet_wrap(~metric, ncol = 1, scales = 'free_y') +
+  scale_x_continuous(trans = "reverse", breaks = unique(dplot2$size)) +
+  theme(legend.position = 'top') + labs(y = '') 
+p
+ggsave(p, width = 6.3, height = 8.4, filename = "overleaf/fig-sim01a.pdf")
+
+dplot3 = dresults |>
+  group_by(replacement, metric, d) |>
+  summarise(m = mean(value), lo = m - 1.96*sd(value)/sqrt(n()), hi = m + 1.96*sd(value)/sqrt(n()))
+
+p = ggplot(data=dplot3) +
+  geom_errorbar(aes(x=d, y = m, ymin = lo, ymax=hi, col = replacement), 
+                size = 1, width = 0.5, position = position_dodge()) +
+  facet_wrap(~metric, ncol = 1, scales = 'free_y') +
+  scale_x_continuous(breaks = unique(dplot3$d)) +
+  theme(legend.position = 'top') + labs(y = '') 
+p
+
 ggplot(data=dplot2) +
   geom_errorbar(aes(x=size, y = m, ymin = lo, ymax=hi, col = replacement), 
                 size = 1, width = 5, position = position_dodge()) +
   facet_wrap(~metric, ncol = 1, scales = 'free_y') +
   scale_x_continuous(trans = "reverse", breaks = unique(dplot2$size)) +
+  theme(legend.position = 'top') + labs(y = '') 
+
+ggplot(data=dresults) +
+  geom_point(aes(x=d, y = value,  col = replacement), se=FALSE, 
+              size = 1) +
+  geom_smooth(aes(x=d, y = value,  col = replacement), se=FALSE, 
+                size = 1) +
+  facet_wrap(~metric, ncol = 1, scales = 'free_y') +
   theme(legend.position = 'top') + labs(y = '') 
 
 p = ggplot(data=subset(dplot2, replacement %in% c('dm', 'lrnm', 'lrnm-cond-hermite'))) +

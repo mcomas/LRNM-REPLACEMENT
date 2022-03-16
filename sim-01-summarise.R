@@ -31,8 +31,24 @@ ggplot(data=dresults) +
   scale_x_continuous(trans = "reverse") +
   theme(legend.position = 'top')
 
-ggplot(data=subset(dresults, grepl("^lrn", Replacement))) +
+ggplot(data=subset(dresults, grepl("^lrnm-cond", Replacement))) +
   geom_smooth(aes(x = size, y = value, col = Replacement), se = TRUE) +
+  geom_jitter(aes(x = size, y = value, col = Replacement, group = paste(size,Replacement)), alpha = 0.6, size = 0.5) +
+  facet_grid(metric~dataset, scales = 'free_y') +
+  scale_x_continuous(trans = "reverse") +
+  theme(legend.position = 'top')
+
+ggplot(data=subset(dresults, dataset == 'circle' & Replacement != 'em-normal')) +
+  geom_smooth(aes(x = size, y = value, col = Replacement), se = TRUE) +
+  geom_boxplot(aes(x = size, y = value, fill = Replacement, group = paste(size,Replacement)), se = TRUE) +
+  geom_jitter(aes(x = size, y = value, col = Replacement, group = paste(size,Replacement)), alpha = 0.6, size = 0.5) +
+  facet_grid(metric~dataset, scales = 'free_y') +
+  scale_x_continuous(trans = "reverse") +
+  theme(legend.position = 'top')
+
+ggplot(data=subset(dresults, dataset != 'circle')) +
+  geom_smooth(aes(x = size, y = value, col = Replacement), se = TRUE) +
+  geom_boxplot(aes(x = size, y = value, fill = Replacement, group = paste(size,Replacement)), se = TRUE) +
   geom_jitter(aes(x = size, y = value, col = Replacement, group = paste(size,Replacement)), alpha = 0.6, size = 0.5) +
   facet_grid(metric~dataset, scales = 'free_y') +
   scale_x_continuous(trans = "reverse") +
