@@ -1,6 +1,5 @@
 library(coda.base)
 library(coda.count)
-library(zCompositions)
 library(mvtnorm)
 if(!exists("GEN")) GEN = "count_uniform-size_00030-data_lrnormal-seed_00002"
 
@@ -11,7 +10,7 @@ d = ncol(X) - 1
 M = coordinates(colSums(X))
 S = diag(d)
 
-Bd = lapply(1:ncol(X), ilr_basis)
+Bd = c(list(1), lapply(2:ncol(X), ilr_basis))
 
 
 iZ = X == 0

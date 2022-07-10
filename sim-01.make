@@ -2,7 +2,8 @@ L_data = lrnormal
 L_seed = $(shell seq 1 50)
 L_count =  uniform
 L_size = $(shell seq 30 20 110)
-L_replacement = lrnm dm lrnm-cond-hermite lrnm-vem lrnb-cond-1by1-hermite lrnb-cond-1-hermite
+L_replacement = lrnm-hermite lrnm-montecarlo lrnm-vem lrnm-cond-hermite
+# dm lrnm-cond-hermite lrnm-vem lrnb-cond-1by1-hermite lrnb-cond-1-hermite
 L_evaluate = paired.distance paired.distance.in0 stress
 # frobenius stress1
 
@@ -25,7 +26,7 @@ L_EVALUATE = $(foreach evaluate,$(L_evaluate),$(foreach replacement,$(L_REPLACEM
 EVALUATE = $(foreach evaluate,$(L_EVALUATE),$(shell printf 'sim-01/data/%s.RData' $(evaluate)))
 
 
-all : $(CODA) $(CODA_COUNT) $(REPLACEMENT) $(EVALUATE) # sim-01/datasets-summary.RData
+all : $(CODA) $(CODA_COUNT) $(REPLACEMENT) # $(EVALUATE) # sim-01/datasets-summary.RData
 data : $(CODA) $(CODA_COUNT)
 
 sim-01/datasets-summary.RData : sim-01/datasets-summary.R $(CODA_COUNT)

@@ -1,5 +1,4 @@
 library(coda.base)
-library(zCompositions)
 
 if(!exists("GEN")) GEN = "replacement_zinflrnm-count_uniform-size_00050-data_parliament-seed_00001"
 FDATA = sub("replacement_.+-data_(.+)", "\\1", GEN)

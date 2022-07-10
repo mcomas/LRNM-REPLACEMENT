@@ -1,8 +1,7 @@
 library(coda.base)
 library(coda.count)
-library(zCompositions)
 library(mvtnorm)
-if(!exists("GEN")) GEN = "count_uniform-size_00030-data_parliament-seed_00002"
+if(!exists("GEN")) GEN = "count_uniform-size_00030-data_lrnormal-seed_00002"
 
 ###############
 load(sprintf("sim-01/data/%s.RData", GEN))
@@ -12,7 +11,8 @@ M = coordinates(colSums(X))
 S = diag(d)
 
 B0 = matrix(0, nrow = 1+length(M), ncol = length(M))
-Bd = lapply(1:ncol(X), ilr_basis)
+Bd = list(matrix(1))
+Bd = c(Bd, lapply(2:ncol(X), ilr_basis))
 
 
 iZ = X == 0
