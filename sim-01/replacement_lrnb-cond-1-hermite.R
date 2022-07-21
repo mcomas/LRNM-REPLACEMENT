@@ -136,7 +136,7 @@ for(K in 0){
       
       if(K == 0){
         lNapprox.wNZ1 = mapply(function(i, mt, st, B){
-          c_posterior_approximation_vec(X[i,], mt, MASS::ginv(st), B)
+          c_lrnm_posterior_approximation_vec(X[i,], mt, MASS::ginv(st), B)
         }, wNZ1, lMt, lSt, lBNZ1, SIMPLIFY = FALSE)
         
         lMoments.wNZ1 = mapply(function(i, napprox, mt, st, B){
@@ -208,6 +208,6 @@ for(K in 0){
   }
 }
 
-P.rpl = composition(M1)
+P.rpl = composition(M1, ilr_basis(ncol(X)))
 
 save(P.rpl, file = sprintf("sim-01/data/replacement_lrnb-cond-1-hermite-%s.RData", GEN))

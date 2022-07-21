@@ -20,7 +20,7 @@ results = data.frame(
   metric = 'STRESS',
   value = stress(coordinates(P[iNZ,]), coordinates(P.rpl[iNZ,])))
 
-saveRDS(results, file = sprintf("sim-01/data/evaluate_stress-%s.RData", GEN))
+saveRDS(results, file = sprintf("sim-01/data/evaluate_stress-%s.rds", GEN))
 
 # evaluate = function(H_gs, H_p){
 #   c('paired.dist' = mean(apply(H_gs-H_p, 1, function(x) sqrt(sum(x^2)))),
