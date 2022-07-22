@@ -5,6 +5,7 @@ if(!exists("GEN")) GEN = "count_uniform-size_00030-data_lrnormal-dim_3-seed_0000
 
 ###############
 load(sprintf("%s/data/%s.RData", SIM, GEN))
+t0 = proc.time()
 
 fit_ = fit_conditional_lrnm(X, hermite.order = 50)
 p_mu = composition(fit_$mu %*% MASS::ginv(fit_$B1sub), ilr_basis(ncol(X)))
@@ -17,4 +18,5 @@ for(i in 1:nrow(X)){
   }
 }
 
-save(P.rpl, file = sprintf("%s/data/replacement_lrnb-cond-1-hermite-new-%s.RData", SIM, GEN))
+TIME = proc.time() - t0
+save(P.rpl, TIME, file = sprintf("%s/data/replacement_lrnb-cond-1-hermite-new-%s.RData", SIM, GEN))

@@ -1,6 +1,6 @@
 library(mvtnorm)
 library(coda.base)
-if(!exists("SIM")) GEN = 'sim-01a'
+if(!exists("SIM")) SIM = 'sim-01a'
 if(!exists("GEN")) GEN = 'dim_3-seed_00001'
 
 GEN_PATTERN = "dim_([0-9]+)-seed_([0-9]+)"
@@ -20,7 +20,14 @@ rotation = random_rotation_matrix_incl_flip <- function(n){
 d = DIM
 M = rotation(d)
 
-MU = rnorm(d)
+B = ilr_basis(d+1)
+
+REPEAT = TRUE
+while(REPEAT){
+  MU = rnorm(d)
+  PMU = composition(MU, B)
+  REPEAT = min(PMU) > 50/(200*d)
+}
 SIGMA = M %*% diag(rlnorm(d)) %*% t(M)
 
 H = rmvnorm(100, mean = MU, sigma = SIGMA) 

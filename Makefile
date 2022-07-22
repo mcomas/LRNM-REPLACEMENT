@@ -7,9 +7,11 @@ all : $(BUILDS)
 
 .sim-01a_build : FORCE
 	$(MAKE) -f sim-common.make -e COUNT=uniform
+	$(MAKE) overleaf/sim-01a-fig01b.pdf -f sim-common.make -e COUNT=uniform
 
 .sim-01b_build : FORCE
 	$(MAKE) -f sim-common.make -e SIM=sim-01b
+	$(MAKE) overleaf/sim-01b-fig01b.pdf -f sim-common.make -e SIM=sim-01b
 
 .sim-02a_build : FORCE
 	$(MAKE) -f sim-common.make -e SIM=sim-02a DATA=lrskew
