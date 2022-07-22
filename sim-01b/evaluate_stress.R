@@ -15,7 +15,7 @@ stress = function(H_orig, H_p){
   sqrt(sum((as.matrix(dist(H_p)) -  as.matrix(dist(H_orig)))^2) / sum(as.matrix(dist(H_orig))^2))
 }
 
-iNZ = rowSums(X == 0) != 0
+iNZ = rep(T, ncol(X)) #rowSums(X == 0) != 0
 
 results = data.frame(
   gen = GEN,

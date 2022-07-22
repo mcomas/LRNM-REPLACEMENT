@@ -1,3 +1,0 @@
-- imputing ones (one-mixture-lrn) represent an small improvement in measure STRESS1.
-- parametric approach using a gaussian prior does not improve non-parametric count zero replacement.
-- mixture models seems to improve fitting results.
