@@ -21,7 +21,7 @@ d = DIM
 M = rotation(d)
 
 MU = rnorm(d)
-SIGMA = M %*% diag(rlnorm(d, sdlog = 2)) %*% t(M)
+SIGMA = M %*% diag(rlnorm(d)) %*% t(M)
 
 H = rmvnorm(100, mean = MU, sigma = SIGMA) 
 
