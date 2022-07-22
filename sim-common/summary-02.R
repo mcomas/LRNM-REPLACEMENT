@@ -1,6 +1,6 @@
 library(tidyverse)
 
-l_results = list.files("sim-01b/data/", pattern = "evaluate.*rds", full.names = TRUE) %>%
+l_results = list.files("sim-01a/data/", pattern = "evaluate.*rds", full.names = TRUE) %>%
   lapply(function(x) try(readRDS(x)))
 l_results = l_results[sapply(l_results, is.data.frame)]
 
