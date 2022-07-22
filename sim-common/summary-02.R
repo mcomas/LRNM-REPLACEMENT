@@ -1,5 +1,5 @@
 library(tidyverse)
-SIM = "sim-02a"
+SIM = "sim-03a"
 
 l_results = list.files(sprintf("%s/data/", SIM), pattern = "evaluate.*rds", full.names = TRUE) %>%
   lapply(function(x) try(readRDS(x)))
