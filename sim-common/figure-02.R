@@ -28,9 +28,10 @@ p = ggplot(data=dplot) +
   geom_errorbar(aes(x=factor(rsize), y = m, ymin = lo, ymax=hi, col = replacement), 
                 size = 1, width = 0.2, position = position_dodge(width =0.5)) +
   facet_grid(.~dim, scales = 'free_x', drop = TRUE) +
+  scale_y_continuous(trans = 'log', breaks = 10^(-6:8)) +
   # facet_wrap(~metric, ncol = 1, scales = 'free_y') +
   # scale_x_continuous(breaks = unique(dplot$rsize)) +
   theme_minimal() +
   theme(legend.position = 'none') + labs(col = '', x = 'n', y = 'Time (seconds)')
 
-ggsave(p, filename = sprintf("overleaf/%s-fig02.pdf", SIM), width = 7, height = 2.85)
+ggsave(p, filename = sprintf("overleaf/%s-fig02.pdf", SIM), width = 7, height = 2.35)

@@ -6,18 +6,20 @@ BUILDS = $(SIM_BUILDS)
 all : $(BUILDS)
 
 .sim-01a_build : FORCE
-	$(MAKE) -f sim-common.make -e COUNT=uniform
-	$(MAKE) overleaf/sim-01a-fig01b.pdf -f sim-common.make -e COUNT=uniform
+	$(MAKE) -f sim-common.make -e SIM=sim-01a DATA=lrnormal-prop80 COUNT=uniform
+	date > $@
 
 .sim-01b_build : FORCE
-	$(MAKE) -f sim-common.make -e SIM=sim-01b
-	$(MAKE) overleaf/sim-01b-fig01b.pdf -f sim-common.make -e SIM=sim-01b
+	$(MAKE) -f sim-common.make -e SIM=sim-01b DATA=lrnormal-prop80 COUNT=dim
+	date > $@
 
 .sim-02a_build : FORCE
-	$(MAKE) -f sim-common.make -e SIM=sim-02a DATA=lrskew
+	$(MAKE) -f sim-common.make -e SIM=sim-02a DATA=lrskew COUNT=dim
+	date > $@
 
 .sim-03a_build : FORCE
-	$(MAKE) -f sim-common.make -e SIM=sim-03a DATA=mixt2
+	$(MAKE) -f sim-common.make -e SIM=sim-03a DATA=mixt2 COUNT=dim
+	date > $@
 
 .%_build : FORCE 
 	$(MAKE) -f $*.make

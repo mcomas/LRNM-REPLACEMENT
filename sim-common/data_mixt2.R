@@ -20,8 +20,15 @@ rotation = random_rotation_matrix_incl_flip <- function(n){
 d = DIM
 M = rotation(d)
 
-MU1 = rnorm(d)
-SIGMA = M %*% diag(rlnorm(d, sdlog = 2)) %*% t(M)
+B = ilr_basis(d+1)
+
+REPEAT = TRUE
+while(REPEAT){
+  MU1 = rnorm(d)
+  PMU1 = composition(MU1, B)
+  REPEAT = min(PMU1) > 50/(200*d)
+}
+SIGMA = M %*% diag(rlnorm(d)) %*% t(M)
 
 eig = eigen(SIGMA)
 MU2 = MU1 + eig$values[1] * eig$vectors[,d]

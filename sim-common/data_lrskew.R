@@ -20,8 +20,20 @@ rotation = random_rotation_matrix_incl_flip <- function(n){
 d = DIM
 M = rotation(d)
 
-XI = rnorm(d)
-OMEGA = M %*% diag(rlnorm(d, meanlog = 1)) %*% t(M)
+B = ilr_basis(d+1)
+
+REPEAT = TRUE
+while(REPEAT){
+  XI = rnorm(d)
+  PXI = composition(XI, B)
+  REPEAT = min(PXI) > 50/(200*d)
+}
+REPEAT = TRUE
+while(REPEAT){
+  EIGVALS = rlnorm(d)
+  REPEAT = max(EIGVALS) / sum(EIGVALS) < 0.8
+}
+OMEGA = M %*% diag(EIGVALS) %*% t(M)
 OMEGA = 0.5 * OMEGA + 0.5 * t(OMEGA)
 ALPHA = rnorm(d) * 1000 #runif(1, 10, 1000)
 

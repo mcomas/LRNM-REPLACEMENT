@@ -16,9 +16,10 @@ load(sprintf('%s/data/%s.RData', SIM, FDATA))
 
 set.seed(SEED)
 NO_ZEROS = TRUE
-# while(NO_ZEROS){
+while(NO_ZEROS){
   X = rmultinomial(size = DIM * SIZE, p = P)
-  NO_ZEROS = sum(X == 0) < 5 | min(colSums(X != 0)) == 0
-# }
+  # Force that at least one observation has non-zero in each part.
+  NO_ZEROS = min(colSums(X != 0)) == 0  
+}
 
 save(X, file = sprintf("%s/data/count_dim-%s.RData", SIM, GEN))
