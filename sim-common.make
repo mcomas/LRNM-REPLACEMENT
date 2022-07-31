@@ -38,7 +38,7 @@ $(SIM)/datasets-summary.RData : $(SIM)/datasets-summary.R $(CODA_COUNT)
 	Rscript $<
 
 define DATA_RULE
-$(SIM)/data/data_$(data)-dim_$(dim)-seed_$(seed).RData : sim-common/data_$(data).R
+$(SIM)/data/data_$(data)-dim_$(dim)-seed_$(seed).RData : sim-common/data_$(data).R | $(SIM)/data
 	Rscript -e 'SIM = "$(SIM)"; GEN = "dim_$(dim)-seed_$(seed)"; source("$$<")'
 endef
 $(foreach data,$(L_data),$(foreach seed,$(L_seed_s),$(foreach dim,$(L_dim),$(eval $(DATA_RULE)))))
@@ -63,6 +63,9 @@ $(foreach evaluate,$(L_evaluate),$(foreach replacement,$(L_REPLACEMENT),$(eval $
 
 overleaf/$(SIM)-fig%.pdf : sim-common/figure-%.R $(EVALUATE)
 	Rscript -e 'SIM = "$(SIM)"; source("$<")'
+
+$(SIM)/data :
+	mkdir -p $@
 
 clean :
 	rm -f $(SIM)/data/*.RData
