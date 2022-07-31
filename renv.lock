@@ -37,6 +37,13 @@
       "Repository": "CRAN",
       "Hash": "366a8838782928e398b8762c932a42a3"
     },
+    "NADA": {
+      "Package": "NADA",
+      "Version": "1.6-1.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "c1c223f694cf3880a017d692c8db6b14"
+    },
     "R6": {
       "Package": "R6",
       "Version": "2.5.1",
@@ -180,11 +187,15 @@
     },
     "coda.count": {
       "Package": "coda.count",
-      "Version": "0.3.10",
-      "Source": "Local",
-      "RemoteType": "local",
-      "RemoteUrl": "/home/marc/Software/coda.count",
-      "Hash": "c17138ee94919f51ba4f82a5063ee237"
+      "Version": "0.3.14",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "coda.count",
+      "RemoteUsername": "mcomas",
+      "RemoteRef": "ensmallen",
+      "RemoteSha": "f5c3ad0519192a5f1c3257267c5e7a73132252d6",
+      "Hash": "45901143ff8ea3f78f7bedc29cbe8714"
     },
     "colorspace": {
       "Package": "colorspace",
@@ -753,6 +764,13 @@
       "Repository": "CRAN",
       "Hash": "759d047596ac173433985deddf313450"
     },
+    "truncnorm": {
+      "Package": "truncnorm",
+      "Version": "1.0-8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "cc8b5bfa01c930ccb56d3051e515fbd8"
+    },
     "tzdb": {
       "Package": "tzdb",
       "Version": "0.3.0",
@@ -822,6 +840,13 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "458bb38374d73bf83b1bb85e353da200"
+    },
+    "zCompositions": {
+      "Package": "zCompositions",
+      "Version": "1.4.0-1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "4484c7ff195601d4eca2a2db0fe3219b"
     }
   }
 }
