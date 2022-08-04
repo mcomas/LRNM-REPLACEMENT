@@ -19,7 +19,7 @@ NO_ZEROS = TRUE
 while(NO_ZEROS){
   X = rmultinomial(size = SIZE, p = P)
   # Force that at least one observation has non-zero in each part.
-  NO_ZEROS = min(colSums(X != 0)) == 0
+  NO_ZEROS = min(colSums(X != 0)) > 1
 }
 
 save(X, file = sprintf("%s/data/count_uniform-%s.RData", SIM, GEN))
