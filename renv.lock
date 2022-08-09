@@ -187,15 +187,15 @@
     },
     "coda.count": {
       "Package": "coda.count",
-      "Version": "0.3.15",
+      "Version": "0.3.16",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "coda.count",
       "RemoteUsername": "mcomas",
       "RemoteRef": "ensmallen",
-      "RemoteSha": "81cd29305cf1f474339723bbd527d7119c21cfb2",
-      "Hash": "40b8a79ffaf90d22b6158a2301116bb8"
+      "RemoteSha": "b3f3c2fef8a8d1e5138e351e5422865f1ad944db",
+      "Hash": "4e6902106b98c02752417ee183665e65"
     },
     "colorspace": {
       "Package": "colorspace",
