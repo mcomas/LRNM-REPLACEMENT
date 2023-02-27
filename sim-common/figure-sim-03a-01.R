@@ -1,6 +1,6 @@
 library(tidyverse)
 
-if(!exists("SIM")) SIM = 'sim-01a'
+if(!exists("SIM")) SIM = 'sim-03a'
 
 l_results = list.files(sprintf("%s/data/", SIM), pattern = "evaluate.*rds", full.names = TRUE) %>%
   lapply(function(x) try(readRDS(x)))
@@ -21,13 +21,8 @@ dplot = dresults %>%
     pcor = pmap_dbl(list(data, d, seed), function(.data, .d, .seed){
       fname = sprintf("%s/data/data_%s-dim_%d-seed_%05d.RData", SIM, .data, .d, .seed)
       load(fname)
-      pseudo_cor = function(S){
-        l = eigen(S)$values
-        v = cumsum(l) / sum(l)
-        1-2*(1-quantile(v[-length(v)], 0.5))
-      }
-      pcor = pseudo_cor(SIGMA)
-      unname(pcor)
+      eigv = eigen(SIGMA)$values
+      max(eigv) - mean(eigv)
     })
   )
 

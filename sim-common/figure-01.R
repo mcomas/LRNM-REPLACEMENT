@@ -13,10 +13,6 @@ dresults = l_results %>%
   extract(gen, c('replacement', 'count', 'size', 'data', 'dim', 'seed'), 
           'replacement_(.+)-count_(.+)-size_(.+)-data_(.+)-dim_(.+)-seed_(.+)', convert = TRUE) %>%
   mutate(rsize = if_else(count == 'uniform', size, dim * size),
-         replacement = fct_recode(replacement,
-                                  "lrnm" = "lrnm-montecarlo",
-                                  "lrnm-cond-1" ="lrnb-cond-1-hermite-new",
-                                  "lrnm-cond" = "lrnm-cond-montecarlo"),
          dim = fct_reorder(sprintf("d = %d", dim), dim))
 
 dplot = dresults %>%

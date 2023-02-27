@@ -19,4 +19,4 @@ for(i in 1:nrow(X)){
 }
 
 TIME = proc.time() - t0
-save(P.rpl, TIME, file = sprintf("%s/data/replacement_lrnb-cond-1-hermite-new-%s.RData", SIM, GEN))
+save(P.rpl, TIME, file = sprintf("%s/data/replacement_lrnb-cond-1-hermite-%s.RData", SIM, GEN))
