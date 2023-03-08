@@ -17,7 +17,9 @@ dresults = l_results %>%
 
 dplot = dresults %>%
   group_by(replacement, metric, count, dim, size, rsize) %>%
-  summarise(m = mean(value), lo = m - 1.96*sd(value)/sqrt(n()), hi = m + 1.96*sd(value)/sqrt(n()))
+  summarise(m = mean(value), 
+            lo = quantile(value, 0.25), hi = quantile(value, 0.75))
+            # lo = m - 1.96*sd(value)/sqrt(n()), hi = m + 1.96*sd(value)/sqrt(n()))
 
 library(ggplot2)
 p = ggplot(data=dplot) +

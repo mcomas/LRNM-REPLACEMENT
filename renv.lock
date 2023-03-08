@@ -181,6 +181,7 @@
       "Package": "coda.base",
       "Version": "0.5.2",
       "Source": "Local",
+      "Repository": "CRAN",
       "RemoteType": "local",
       "RemoteUrl": "/home/marc/Software/coda.base",
       "Hash": "d169b9e02f7c54a4bd533fbd42558463"

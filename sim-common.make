@@ -3,7 +3,7 @@ DATA = lrnormal-prop80
 COUNT = dim
 ######
 L_data = $(DATA)
-L_seed = $(shell seq 1 5)
+L_seed = $(shell seq 1 50)
 L_dim = 3 5 10 15 20
 # 15 20
 L_count =  $(COUNT)
