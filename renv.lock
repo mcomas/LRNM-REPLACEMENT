@@ -60,17 +60,17 @@
     },
     "Rcpp": {
       "Package": "Rcpp",
-      "Version": "1.0.9",
+      "Version": "1.0.10",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "e9c08b94391e9f3f97355841229124f2"
+      "Hash": "e749cae40fa9ef469b6050959517453c"
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "0.11.2.0.0",
+      "Version": "0.11.4.4.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "1d3c02a90401734e893954c7f8f92f3e"
+      "Hash": "717bd6784b92282f57b21376007ba861"
     },
     "RcppEnsmallen": {
       "Package": "RcppEnsmallen",
@@ -179,24 +179,24 @@
     },
     "coda.base": {
       "Package": "coda.base",
-      "Version": "0.5.2",
+      "Version": "0.5.4.1",
       "Source": "Local",
       "Repository": "CRAN",
       "RemoteType": "local",
       "RemoteUrl": "/home/marc/Software/coda.base",
-      "Hash": "d169b9e02f7c54a4bd533fbd42558463"
+      "Hash": "377a5f3b10bdbfb71b6dde35c5e5e792"
     },
     "coda.count": {
       "Package": "coda.count",
-      "Version": "0.3.16",
+      "Version": "0.3.18",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "coda.count",
       "RemoteUsername": "mcomas",
       "RemoteRef": "ensmallen",
-      "RemoteSha": "b3f3c2fef8a8d1e5138e351e5422865f1ad944db",
-      "Hash": "4e6902106b98c02752417ee183665e65"
+      "RemoteSha": "da3d9d0e2d668ebb89299bb9ec4e88d1e2f47ea5",
+      "Hash": "f9d4a10af8741bc057760741b99dd3fd"
     },
     "colorspace": {
       "Package": "colorspace",
@@ -417,10 +417,10 @@
     },
     "jsonlite": {
       "Package": "jsonlite",
-      "Version": "1.8.0",
+      "Version": "1.8.4",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "d07e729b27b372429d42d24d503613a0"
+      "Hash": "a4269a09a9b865579b2635c77e572374"
     },
     "knitr": {
       "Package": "knitr",
@@ -641,10 +641,10 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "1.0.2",
+      "Version": "1.0.6",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "04884d9a75d778aca22c7154b8333ec9"
+      "Hash": "4ed1f8336c8d52c3e750adcdc57228a7"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
