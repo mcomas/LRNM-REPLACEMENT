@@ -7,7 +7,7 @@ if(!exists("GEN")) GEN = "count_uniform-size_00050-data_lrnormal-prop80-dim_20-s
 load(sprintf("%s/data/%s.RData", SIM, GEN))
 t0 = proc.time()
 
-fit = fit_lrnm(X, eps = 0.05, mc.nsim = 500, max.iter = 500)
+fit = fit_lrnm(X, eps = 0.05, mc.nsim = 500, max_iter = 500)
 P.rpl = fit$P
 
 TIME = proc.time() - t0

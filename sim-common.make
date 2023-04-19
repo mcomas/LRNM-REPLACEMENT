@@ -8,8 +8,8 @@ L_dim = 5 10 15 20
 # 15 20
 L_count =  $(COUNT)
 L_count_size = $(shell seq 50 50 200)
-L_replacement = dm lrnm-montecarlo lrnm-cond-montecarlo
-#lrnb-cond-1-hermite  gbm lrnm-vem
+L_replacement = dm lrnm-montecarlo lrnm-cond-montecarlo gbm
+#lrnb-cond-1-hermite  lrnm-vem
 L_evaluate = stress 
 # time
 
