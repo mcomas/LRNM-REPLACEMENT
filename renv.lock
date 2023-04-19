@@ -67,17 +67,17 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "0.11.4.4.0",
+      "Version": "0.12.2.0.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "717bd6784b92282f57b21376007ba861"
+      "Hash": "39aed0e5fbb0b775a1752ad7813fc56c"
     },
-    "RcppEnsmallen": {
-      "Package": "RcppEnsmallen",
-      "Version": "0.2.19.0.1",
+    "RcppParallel": {
+      "Package": "RcppParallel",
+      "Version": "5.1.7",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "9410737d22bcbb332fa76fd095025bd2"
+      "Hash": "a45594a00f5dbb073d5ec9f48592a08a"
     },
     "SparseM": {
       "Package": "SparseM",
@@ -179,24 +179,22 @@
     },
     "coda.base": {
       "Package": "coda.base",
-      "Version": "0.5.4.1",
-      "Source": "Local",
+      "Version": "0.5.4.3",
+      "Source": "Repository",
       "Repository": "CRAN",
-      "RemoteType": "local",
-      "RemoteUrl": "/home/marc/Software/coda.base",
-      "Hash": "377a5f3b10bdbfb71b6dde35c5e5e792"
+      "Hash": "d3979cc310071f258976c7fd53a34fde"
     },
     "coda.count": {
       "Package": "coda.count",
-      "Version": "0.3.18",
+      "Version": "0.4.0.3",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "coda.count",
       "RemoteUsername": "mcomas",
-      "RemoteRef": "ensmallen",
-      "RemoteSha": "da3d9d0e2d668ebb89299bb9ec4e88d1e2f47ea5",
-      "Hash": "f9d4a10af8741bc057760741b99dd3fd"
+      "RemoteRef": "HEAD",
+      "RemoteSha": "33bd784c66fa4493df96d5da243200f66bcb548f",
+      "Hash": "dd543ea36623b155970eb3417693cc41"
     },
     "colorspace": {
       "Package": "colorspace",
@@ -585,10 +583,10 @@
     },
     "randtoolbox": {
       "Package": "randtoolbox",
-      "Version": "1.31.1",
+      "Version": "2.0.4",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "315fdb9e04c580551d091d1421582bb2"
+      "Hash": "3fbb3aa5688a4004b3d1c7efd80689f5"
     },
     "rappdirs": {
       "Package": "rappdirs",
@@ -641,10 +639,10 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "1.0.6",
+      "Version": "1.0.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "4ed1f8336c8d52c3e750adcdc57228a7"
+      "Hash": "04884d9a75d778aca22c7154b8333ec9"
     },
     "rmarkdown": {
       "Package": "rmarkdown",
@@ -655,10 +653,10 @@
     },
     "rngWELL": {
       "Package": "rngWELL",
-      "Version": "0.10-7",
+      "Version": "0.10-9",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "3a89ad41b7622e31859bc1987c46e042"
+      "Hash": "b5c163aebf9187ab8a91df92832ff88e"
     },
     "rstudioapi": {
       "Package": "rstudioapi",

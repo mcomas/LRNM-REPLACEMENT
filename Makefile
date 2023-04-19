@@ -1,4 +1,4 @@
-SIM = sim-01a sim-01b sim-02a sim-03a
+SIM = sim-01a sim-01b #sim-02a sim-03a
 SIM_BUILDS = $(foreach sim,$(SIM), $(shell printf '.%s_build' $(sim)))
 
 BUILDS = $(SIM_BUILDS)

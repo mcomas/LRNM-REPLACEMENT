@@ -19,6 +19,13 @@ dplot = dresults %>%
   group_by(replacement, metric, count, dim, size, rsize) %>%
   summarise(m = mean(value, na.rm=TRUE), lo = m - 1.96*sd(value, na.rm=TRUE)/sqrt(n()), hi = m + 1.96*sd(value, na.rm=TRUE)/sqrt(n()))
 
+dplot = dresults %>%
+  group_by(replacement, metric, count, dim, size, rsize) %>%
+  summarise(m = median(value, na.rm=TRUE), 
+            lo = quantile(value, 0.25, na.rm=TRUE), 
+            hi = quantile(value, 0.75, na.rm=TRUE))
+
+
 library(ggplot2)
 p = ggplot(data=dplot) +
   geom_errorbar(aes(x=factor(rsize), y = m, ymin = lo, ymax=hi, col = replacement), 

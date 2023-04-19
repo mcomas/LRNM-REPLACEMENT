@@ -1,13 +1,14 @@
 library(coda.count)
-library(coda.base)
+
 if(!exists("SIM")) SIM = 'sim-01a'
-if(!exists("GEN")) GEN = "count_uniform-size_00050-data_lrnormal-prop80-dim_5-seed_00001"
+if(!exists("GEN")) GEN = "count_dim-size_00030-data_lrnormal-prop80-dim_3-seed_00001"
 
 ###############
 load(sprintf("%s/data/%s.RData", SIM, GEN))
 t0 = proc.time()
 
-P.rpl = fit_vem_lrnm(X)
+fit = fit_lrnm(X, method = 'vem', max_iter = 1000, eps = 0.01)
+P.rpl = fit$P
 
 TIME = proc.time() - t0
-save(P.rpl, TIME, file = sprintf("%s/data/replacement_lrnm-vem-%s.RData", SIM, GEN))
+save(P.rpl, TIME, fit, file = sprintf("%s/data/replacement_lrnm-vem-%s.RData", SIM, GEN))

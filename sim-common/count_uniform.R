@@ -1,7 +1,7 @@
 library(coda.count)
 
 if(!exists("SIM")) SIM = 'sim-01a'
-if(!exists("GEN")) GEN = "size_00030-data_lrnormal-dim_3-seed_00001"
+if(!exists("GEN")) GEN = "size_00030-data_lrnormal-prop80-dim_3-seed_00001"
 
 GEN_PATTERN = "size_([0-9]+)-data_(.+)-dim_(.+)-seed_([0-9]+)"
 

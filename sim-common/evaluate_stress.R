@@ -1,7 +1,7 @@
 library(coda.base)
 
 if(!exists("SIM")) SIM = 'sim-01a'
-if(!exists("GEN")) GEN = "replacement_dm-count_uniform-size_00050-data_lrnormal-dim_3-seed_00001"
+if(!exists("GEN")) GEN = "replacement_lrnm-montecarlo-count_uniform-size_00050-data_lrnormal-prop80-dim_5-seed_00001"
 
 FDATA = sub("replacement_.+-data_(.+)", "\\1", GEN)
 FCOUNT = sub("replacement_.+-count_(.+)", "\\1", GEN)

@@ -3,13 +3,15 @@ DATA = lrnormal-prop80
 COUNT = dim
 ######
 L_data = $(DATA)
-L_seed = $(shell seq 1 50)
-L_dim = 3 5 10 15 20
+L_seed = $(shell seq 1 5)
+L_dim = 5 10 15 20
 # 15 20
 L_count =  $(COUNT)
 L_count_size = $(shell seq 50 50 200)
-L_replacement = dm lrnm-montecarlo lrnb-cond-1-hermite lrnm-cond-montecarlo gbm # lrnm-vem
-L_evaluate = stress time
+L_replacement = dm lrnm-montecarlo lrnm-cond-montecarlo
+#lrnb-cond-1-hermite  gbm lrnm-vem
+L_evaluate = stress 
+# time
 
 
 ####
@@ -29,7 +31,7 @@ REPLACEMENT = $(foreach replacement,$(L_REPLACEMENT),$(shell printf '$(SIM)/data
 L_EVALUATE = $(foreach evaluate,$(L_evaluate),$(foreach replacement,$(L_REPLACEMENT),$(shell printf 'evaluate_%s-%s' $(evaluate) $(replacement))))
 EVALUATE = $(foreach evaluate,$(L_EVALUATE),$(shell printf '$(SIM)/data/%s.rds' $(evaluate)))
 
-FIGURES = overleaf/$(SIM)-fig01.pdf overleaf/$(SIM)-fig02.pdf 
+FIGURES = overleaf/$(SIM)-fig01.pdf #overleaf/$(SIM)-fig02.pdf 
 
 all : $(CODA) $(CODA_COUNT) $(REPLACEMENT) $(EVALUATE) $(FIGURES)# $(SIM)/datasets-summary.RData
 data : $(CODA) $(CODA_COUNT)

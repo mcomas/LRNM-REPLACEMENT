@@ -1,8 +1,7 @@
 library(zCompositions)
 
 if(!exists("SIM")) SIM = 'sim-01a'
-if(!exists("GEN")) GEN = "count_uniform-size_00050-data_lrnormal-prop80-dim_3-seed_00001"
-
+if(!exists("GEN")) GEN = "count_dim-size_00030-data_lrnormal-prop80-dim_3-seed_00001"
 
 ###############
 load(sprintf("%s/data/%s.RData", SIM, GEN))
