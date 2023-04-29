@@ -72,13 +72,6 @@
       "Repository": "CRAN",
       "Hash": "39aed0e5fbb0b775a1752ad7813fc56c"
     },
-    "RcppParallel": {
-      "Package": "RcppParallel",
-      "Version": "5.1.7",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "a45594a00f5dbb073d5ec9f48592a08a"
-    },
     "SparseM": {
       "Package": "SparseM",
       "Version": "1.81",
@@ -186,15 +179,15 @@
     },
     "coda.count": {
       "Package": "coda.count",
-      "Version": "0.4.0.3",
+      "Version": "0.4.0.8",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteRepo": "coda.count",
       "RemoteUsername": "mcomas",
       "RemoteRef": "HEAD",
-      "RemoteSha": "33bd784c66fa4493df96d5da243200f66bcb548f",
-      "Hash": "dd543ea36623b155970eb3417693cc41"
+      "RemoteSha": "cca8521e26dc3fe7120fcee476433c783a4e0517",
+      "Hash": "b7fcb608d239bd847ece797003f11215"
     },
     "colorspace": {
       "Package": "colorspace",

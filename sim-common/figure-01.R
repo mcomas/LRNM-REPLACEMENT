@@ -28,12 +28,16 @@ dplot = dresults %>%
 
 library(ggplot2)
 p = ggplot(data=dplot) +
+  geom_point(aes(x=factor(rsize), y = m, shape = replacement, col=replacement), size=2, position = position_dodge(width = 0.75)) +
   geom_errorbar(aes(x=factor(rsize), y = m, ymin = lo, ymax=hi, col = replacement), 
-                size = 1, width = 0.2, position = position_dodge(width =0.5)) +
+                size = 1, width = 0.2, position = position_dodge(width =0.75), alpha = 0.4) +
+  geom_line(aes(x=factor(rsize), y = m,  col = replacement, group = replacement), position = position_dodge(width = 0.75)) +
   facet_grid(.~dim, scales = 'free_x', drop = TRUE) +
   # facet_wrap(~metric, ncol = 1, scales = 'free_y') +
   # scale_x_continuous(breaks = unique(dplot$rsize)) +
+  scale_shape_manual(values=c(15:18, 8, 4,3,0:2)) +
+  
   theme_minimal() +
-  theme(legend.position = 'top') + labs(col = '', x = 'n', y = 'STRESS')
+  theme(legend.position = 'top') + labs(shape='', col = '', x = 'n', y = 'STRESS')
 
 ggsave(p, filename = sprintf("overleaf/%s-fig01.pdf", SIM), width = 7, height = 3)
