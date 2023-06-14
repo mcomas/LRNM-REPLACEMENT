@@ -30,6 +30,6 @@ p = ggplot(data=dplot) +
   # facet_wrap(~metric, ncol = 1, scales = 'free_y') +
   # scale_x_continuous(breaks = unique(dplot$rsize)) +
   theme_minimal() +
-  theme(legend.position = 'none') + labs(col = '', x = 'n', y = 'Time (seconds)')
+  theme(legend.position = 'top') + labs(col = '', x = 'n', y = 'Time (seconds)')
 
 ggsave(p, filename = sprintf("overleaf/%s-fig02.pdf", SIM), width = 7, height = 2.35)
